@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cryptography Playground</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="card hero">
+      <div>
+        <p class="eyebrow">Interactive Security Lab</p>
+        <h1>Cryptography Playground</h1>
+        <p class="hero-text">Experiment with classical and modern encryption algorithms.</p>
+      </div>
+      <button id="themeToggle" class="btn btn-secondary">Toggle Theme</button>
+    </header>
+
+    <section class="card tab-card">
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="workbench">Workbench</button>
+        <button class="tab-btn" data-tab="learn">Learn</button>
+        <button class="tab-btn" data-tab="tools">Tools</button>
+        <button class="tab-btn" data-tab="history">History</button>
+      </div>
+    </section>
+
+    <section id="tab-workbench" class="tab-panel active">
+      <div class="dashboard">
+        <section class="card span-3">
+          <div class="card-head">
+            <h2>Algorithm Selection</h2>
+          </div>
+
+          <label class="field">
+            <span>Select Algorithm</span>
+            <select id="algorithmSelect"></select>
+          </label>
+
+          <div id="algorithmMeta" class="pill-wrap"></div>
+
+          <div class="note-box">
+            Keys, theory, security information, and visualization update automatically based on the selected cipher.
+          </div>
+        </section>
+
+        <section class="card span-5">
+          <div class="card-head">
+            <h2>Encryption / Decryption Panel</h2>
+          </div>
+
+          <label class="field">
+            <span>Input</span>
+            <textarea id="mainInput" rows="10" placeholder="Enter plaintext or ciphertext..."></textarea>
+          </label>
+
+          <div id="keyFields" class="key-grid"></div>
+
+          <div class="button-row">
+            <button id="encryptBtn" class="btn">Encrypt</button>
+            <button id="decryptBtn" class="btn btn-secondary">Decrypt</button>
+            <button id="clearBtn" class="btn btn-danger">Clear</button>
+          </div>
+
+          <div id="status" class="status"></div>
+
+          <div class="note-box compact">
+            After your first Encrypt or Decrypt click, changing text, keys, or algorithm will auto-refresh the result.
+          </div>
+        </section>
+
+        <section class="card span-4">
+          <div class="card-head">
+            <h2>Output</h2>
+          </div>
+
+          <label class="field">
+            <span>Result</span>
+            <textarea id="outputText" rows="16" readonly placeholder="Result appears here..."></textarea>
+          </label>
+
+          <div class="button-row">
+            <button id="copyBtn" class="btn btn-secondary">Copy Output</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="tab-learn" class="tab-panel">
+      <div class="dashboard">
+        <section class="card span-12">
+          <div class="card-head">
+            <h2>Step-by-Step Visualization</h2>
+          </div>
+          <div id="visualization" class="visualization-panel">
+            <p class="muted">Run encryption or decryption to inspect the internal process.</p>
+          </div>
+        </section>
+
+        <section class="card span-8">
+          <div class="card-head">
+            <h2>Theory Panel</h2>
+          </div>
+          <div id="theoryPanel"></div>
+        </section>
+
+        <section class="card span-4">
+          <div class="card-head">
+            <h2>Security Information</h2>
+          </div>
+          <div id="securityPanel"></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="tab-tools" class="tab-panel">
+      <div class="dashboard">
+       
+        <section class="card span-12">
+          <div class="card-head">
+            <h2>Cipher Comparison Tool</h2>
+          </div>
+
+          <label class="field">
+            <span>Plaintext for Comparison</span>
+            <textarea id="comparisonInput" rows="5" placeholder="Enter plaintext once and compare multiple algorithms..."></textarea>
+          </label>
+
+          <div class="button-row">
+            <button id="compareBtn" class="btn">Compare Algorithms</button>
+          </div>
+
+          <div id="comparisonResults" class="comparison-grid"></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="tab-history" class="tab-panel">
+      <div class="dashboard">
+        <section class="card span-12">
+          <div class="card-head">
+            <h2>History Panel</h2>
+            <button id="clearHistoryBtn" class="btn btn-secondary">Clear History</button>
+          </div>
+          <div id="historyList"></div>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
